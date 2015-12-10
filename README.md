@@ -18,18 +18,25 @@ welcome](CONTRIBUTING.md)!
 
 For travis-ci.org, create a new client with:
 
-    token := "xyz" // your travis-ci.org token
-    tc := travis.NewClient(token)
+```Go
+token := "xyz" // your travis-ci.org token
+tc := travis.NewClient(token)
+```
 
 For Travis Pro (travis-ci.com), create a new client with:
 
-    token := "xyz" // your travis-ci.com token
-    tc := travis.NewProClient(token)
+```Go
+token := "xyz" // your travis-ci.com token
+tc := travis.NewProClient(token)
+```
+
 
 Once the client is configured, jump on the API!
 
-    repo, err := tc.GetRepository("rjz", "go-travis")
-    // etc
+```Go
+repo, err := tc.GetRepository("rjz", "go-travis")
+// etc
+```
 
 ## License
 
