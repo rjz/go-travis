@@ -3,6 +3,9 @@ Client for Travis-CI
 
 Decidedly unofficial client implementation for Travis CI / Travis Pro API.
 
+[![Build
+Status](https://travis-ci.org/rjz/go-travis.svg)](https://travis-ci.org/rjz/go-travis)
+
 Currently supports minimal CRUD for managing:
 
   * repository settings
