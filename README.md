@@ -23,7 +23,7 @@ For travis-ci.org, create a new client with:
 
 For Travis Pro (travis-ci.com), create a new client with:
 
-    token := "xyz" // your travis-ci.org token
+    token := "xyz" // your travis-ci.com token
     tc := travis.NewProClient(token)
 
 Once the client is configured, jump on the API!
