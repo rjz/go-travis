@@ -18,11 +18,7 @@ func TestListEnvironmentVariables(t *testing.T) {
 		fmt.Fprintf(w, `{"env_vars":[{"id":"1234","name":"foo","value":"bar"}]}`)
 	})
 
-	envVars, err := tc.ListEnvironmentVariables(61)
-	if err != nil {
-		t.Error(err)
-	}
-
+	envVars, _ := tc.ListEnvironmentVariables(61)
 	expected := []EnvironmentVariable{{ID: String("1234"), Name: String("foo"), Value: String("bar")}}
 	if !reflect.DeepEqual(envVars, expected) {
 		t.Errorf("ListEnvironmentVariables returned %+v, expected %+v", envVars, expected)
@@ -40,8 +36,7 @@ func TestCreateEnvironmentVariable(t *testing.T) {
 		fmt.Fprintf(w, `{}`)
 	})
 
-	_, err := tc.CreateEnvironmentVariable(62, &EnvironmentVariable{ID: String("62abc")})
-	if err != nil {
+	if _, err := tc.CreateEnvironmentVariable(62, &EnvironmentVariable{ID: String("62abc")}); err != nil {
 		t.Error(err)
 	}
 }
@@ -57,8 +52,7 @@ func UpdateEnvironmentVariable(t *testing.T) {
 		fmt.Fprintf(w, `{}`)
 	})
 
-	_, err := tc.UpdateEnvironmentVariable(62, "62abc", &EnvironmentVariable{Name: String("SOMEVAR")})
-	if err != nil {
+	if _, err := tc.UpdateEnvironmentVariable(62, "62abc", &EnvironmentVariable{Name: String("SOMEVAR")}); err != nil {
 		t.Error(err)
 	}
 }
