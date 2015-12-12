@@ -17,13 +17,8 @@ func TestGetRepository(t *testing.T) {
 		fmt.Fprintf(w, `{"repo":{"id":41}}`)
 	})
 
-	repo, err := tc.GetRepository("rjz", "dingus")
-	if err != nil {
-		t.Error(err)
-	}
-
 	expected := &Repository{ID: 41}
-	if !reflect.DeepEqual(repo, expected) {
+	if repo, _ := tc.GetRepository("rjz", "dingus"); !reflect.DeepEqual(repo, expected) {
 		t.Errorf("GetRepository returned %+v, expected %+v", repo, expected)
 	}
 }
@@ -38,13 +33,8 @@ func TestGetRepositorySettings(t *testing.T) {
 		fmt.Fprint(w, `{"settings": {"builds_only_with_travis_yml":true}}`)
 	})
 
-	repoSettings, err := tc.GetRepositorySettings(42)
-	if err != nil {
-		t.Error(err)
-	}
-
 	expected := &RepositorySettings{BuildsOnlyWithTravisYml: Bool(true)}
-	if !reflect.DeepEqual(repoSettings, expected) {
+	if repoSettings, _ := tc.GetRepositorySettings(42); !reflect.DeepEqual(repoSettings, expected) {
 		t.Errorf("GetRepositorySettings returned %+v, expected %+v", repoSettings, expected)
 	}
 }
@@ -59,8 +49,7 @@ func TestUpdateRepositorySettings(t *testing.T) {
 		fmt.Fprint(w, `{}`)
 	})
 
-	_, err := tc.UpdateRepositorySettings(43, &RepositorySettings{BuildPushes: Bool(true)})
-	if err != nil {
+	if _, err := tc.UpdateRepositorySettings(43, &RepositorySettings{BuildPushes: Bool(true)}); err != nil {
 		t.Error(err)
 	}
 }

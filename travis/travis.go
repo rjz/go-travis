@@ -99,3 +99,15 @@ func (tc *Client) Delete(path string) ([]byte, error) {
 	}
 	return tc.do(req)
 }
+
+func Bool(value bool) *bool {
+	b := new(bool)
+	*b = value
+	return b
+}
+
+func String(value string) *string {
+	b := new(string)
+	*b = value
+	return b
+}
